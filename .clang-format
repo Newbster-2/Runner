@@ -1,0 +1,11 @@
+---
+BasedOnStyle: LLVM
+
+AlignAfterOpenBracket: DontAlign
+
+UseTab: Never
+
+ContinuationIndentWidth: 4
+
+AllowShortLambdasOnASingleLine: None
+---

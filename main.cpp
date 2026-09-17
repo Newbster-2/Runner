@@ -15,23 +15,25 @@ public:
     // Configure engine settings (like window title)
     engineParameters_[EP_WINDOW_TITLE] = "rbfx Light Skeleton";
     engineParameters_[EP_FULL_SCREEN] = false;
+    engineParameters_[EP_WINDOW_MAXIMIZE] = false;
+    engineParameters_[EP_WINDOW_RESIZABLE] = true;
     engineParameters_[EP_WINDOW_WIDTH] = 1280;
     engineParameters_[EP_WINDOW_HEIGHT] = 720;
   }
 
   void Start() override {
-    // Put your game initialization logic here (scenes, cameras, etc.)
+    auto *input = GetSubsystem<Input>();
+    input->SetMouseMode(Urho3D::MM_FREE);
+    input->SetMouseVisible(true);
 
-    // Subscribe to per-frame update event instead of overriding a virtual
-    // Update()
-    SubscribeToEvent(E_UPDATE, [this](StringHash, VariantMap &eventData) {
-      using namespace Update;
-      float timeStep = eventData[P_TIMESTEP].GetFloat();
+    SubscribeToEvent(
+        E_UPDATE, [this, input](StringHash, VariantMap &eventData) {
+          using namespace Update;
+          float timeStep = eventData[P_TIMESTEP].GetFloat();
 
-      auto *input = GetSubsystem<Input>();
-      if (input->GetKeyDown(KEY_ESCAPE))
-        engine_->Exit();
-    });
+          if (input->GetKeyDown(KEY_ESCAPE))
+            engine_->Exit();
+        });
   }
 };
 
