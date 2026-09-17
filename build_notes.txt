@@ -1,0 +1,28 @@
+Here are both configuration examples, with absolute paths assuming a clone at ~/rbfx:
+Debug build
+
+cmake --preset linux-gcc-x64-dll -DURHO3D_CSHARP=OFF -DCMAKE_BUILD_TYPE=Debug  
+cmake --build cmake-build/linux-gcc-x64-dll --config Debug --parallel $(nproc)  
+cmake --install cmake-build/linux-gcc-x64-dll --config Debug
+
+→ Installs to: ~/rbfx/cmake-build/linux-gcc-x64-dll/install/bin/Debug/libUrho3D.so
+RelWithDebInfo build
+
+cmake --preset linux-gcc-x64-dll -DURHO3D_CSHARP=OFF  
+cmake --build cmake-build/linux-gcc-x64-dll --config RelWithDebInfo --parallel $(nproc)  
+cmake --install cmake-build/linux-gcc-x64-dll --config RelWithDebInfo
+
+→ Installs to: ~/rbfx/cmake-build/linux-gcc-x64-dll/install/bin/RelWithDebInfo/libUrho3D.so
+
+
+cmake -S . -B build -DCMAKE_PREFIX_PATH=/home/Thunder/Desktop/RBFX/rbfx/cmake-build/linux-gcc-x64-dll/install -DBUILD_SHARED_LIBS=ON
+cmake --build build
+
+
+crtl shift insert paste in console
+ctrl alt insert copy in console
+ctrl c clear current input in console
+
+git cmake ninja gcc
+
+vscodium templ-project C++ Extension Pack for Vscodium

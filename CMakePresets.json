@@ -1,0 +1,15 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "debug-dll",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PREFIX_PATH": "/home/Thunder/Desktop/RBFX/rbfx/cmake-build/linux-gcc-x64-dll/install",
+        "BUILD_SHARED_LIBS": "ON"
+      }
+    }
+  ]
+}
