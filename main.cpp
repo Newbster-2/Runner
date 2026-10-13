@@ -1,4 +1,3 @@
-#include <IO/Log.h>
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Engine/EngineDefs.h>
@@ -11,11 +10,11 @@ using namespace Urho3D;
 
 using namespace DefaultConfig;
 
-class OnyxGame : public Application {
-  URHO3D_OBJECT(OnyxGame, Application);
+class UlexliteGame : public Application {
+  URHO3D_OBJECT(UlexliteGame, Application);
 
 public:
-  explicit OnyxGame(Context *context) : Application(context) {}
+  explicit UlexliteGame(Context *context) : Application(context) {}
 
   void Setup() override {
 
@@ -42,9 +41,11 @@ public:
     const ea::string manifest_name = app_name + manifest_extension;
 
     // we want the manifest to exist, but if it doesn't, create it and log error
-    if (!file_sys->FileExists(manifest_name)) {
-      URHO3D_LOGERROR("Manifest file not in game folder! '{}'", manifest_name);
-    }
+    /// if (!file_sys->FileExists(manifest_name)) {
+    ///   URHO3D_LOGERROR("Manifest file not in game folder! '{}'",
+    ///   manifest_name);
+    ///
+    /// }
 
     engineParameters_[EP_WINDOW_TITLE] = "rbfx Light Skeleton";
     engineParameters_[EP_FULL_SCREEN] = false;
@@ -59,16 +60,16 @@ public:
     input->SetMouseMode(Urho3D::MM_FREE);
     input->SetMouseVisible(true);
 
-    SubscribeToEvent(E_UPDATE,
-                     [this, input](StringHash, VariantMap &eventData) {
-                       using namespace Update;
-                       float timeStep = eventData[P_TIMESTEP].GetFloat();
+    SubscribeToEvent(
+        E_UPDATE, [this, input](StringHash, VariantMap &eventData) {
+          using namespace Update;
+          float timeStep = eventData[P_TIMESTEP].GetFloat();
 
-                       if (input->GetKeyDown(KEY_ESCAPE))
-                         engine_->Exit();
-                     });
+          if (input->GetKeyDown(KEY_ESCAPE))
+            engine_->Exit();
+        });
   }
 };
 
 // This macro generates the actual main entry point for Linux
-URHO3D_DEFINE_APPLICATION_MAIN(OnyxGame);
+URHO3D_DEFINE_APPLICATION_MAIN(UlexliteGame);

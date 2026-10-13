@@ -28,7 +28,7 @@ inline const short game_version_minor = 1;
 inline const ea::string manifest_extension = "_manifest.json";
 
 inline const ea::string expected_manifest_json = R"({
-    "game.name": "onyx"
+    "game.name": "ulexite"
     "game.version": "0.0.1",
     "game.build_date": "september_17_2026",
     "game.platform": "desktop"
